@@ -13,7 +13,7 @@ import android.widget.Toast
 private var toast: Toast? = null
 
 private fun Context.showToast(text: String, @Duration length: Int = Toast.LENGTH_SHORT) {
-    //先检查是否在主线程中运行，再进行处理
+    //먼저 메인 스레드에서 실행 중인지 확인한 후 처리합니다.
     if (Looper.myLooper() == Looper.getMainLooper()) {
         toast = toast ?: Toast.makeText(this.applicationContext, text, length)
         toast?.let {

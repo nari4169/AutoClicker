@@ -39,7 +39,6 @@ class AutoClickService : AccessibilityService() {
 
     fun click(x: Int, y: Int) {
         "click $x $y".logd()
-        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.N) return
         val path = Path()
         path.moveTo(x.toFloat(), y.toFloat())
         val builder = GestureDescription.Builder()
@@ -53,7 +52,6 @@ class AutoClickService : AccessibilityService() {
         events.clear()
         events.addAll(newEvents)
         events.toString().logd()
-        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.N) return
         val builder = GestureDescription.Builder()
         events.forEach { builder.addStroke(it.onEvent()) }
         dispatchGesture(builder.build(), null, null)
